@@ -1,0 +1,28 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Exchange
+    network: bsc
+    source:
+      address: "0x3f99a3B3e627e6c35Fde76f7Abf535903098D63D"
+      abi: Exchange
+      startBlock: 24657846
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Trade
+      abis:
+        - name: Exchange
+          file: ./abis/Exchange.json
+        - name: Pair
+          file: ./abis/pair.json
+        - name: Factory
+          file: ./abis/factory.json
+      eventHandlers:
+        - event: Trade(uint256,address,address,uint256,address,uint256,address,uint256)
+          handler: handleTrade
+      file: ./src/exchange.ts

@@ -1,1 +1,1 @@
-# gemxDex-Subgraph-bsc
+# gemxdex-subgraph
